@@ -22,6 +22,6 @@ npm run start
 ### **Tech**
 
 - React
-- React Spring
+- [React Spring](https://www.react-spring.dev/docs)
 
 
