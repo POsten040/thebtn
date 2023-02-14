@@ -33,15 +33,22 @@ const TheBtn = (props) => {
   }), [mouseX, mouseY])
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("timer set")
       return triggerEnd()
-    }, 5000)
+    }, 10000)
     return () => clearTimeout(timer)
   }, [triggerEnd])
+  const [popVis, setPopVis] = useState(null)
+  async function hide(){
+    setPopVis(true)
+    const timer = await setTimeout(() => {
+      return setPopVis(false)
+    }, 4000)
+    return ()=> clearTimeout(timer)
+  }
   return (
     <>
       <animated.div id="animated-btn" style={position}>
-        <OverlayTrigger delay={{ show: 400, hide: 300 }} trigger="focus" placement="right" overlay={popover}>
+        <OverlayTrigger onToggle={()=>{hide()}} show={popVis} delay={{ show: 400, hide: 300 }} trigger="click" placement="right" overlay={popover}>
           <Button
             variant="primary"
             size="lg"
