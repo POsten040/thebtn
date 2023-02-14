@@ -34,7 +34,7 @@ function App() {
       confettiRadius: 6,
       confettiNumber: 500,
       confettiColors: [
-        '#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7',
+        '#ff0a54', '#bae51a', '#e392ce', '#92E3A7', '#fbb1bd', '#f9bec7',
       ],
     })
     setButtonOpacity({
@@ -44,7 +44,7 @@ function App() {
       opacity: 1
     })
     setColor.start({
-      backgroundColor: "#E9DCE4"
+      backgroundColor: "#b07881"
     })
   }
   const [messageOpacity, setMessageOpacity] = useSpring(() => ({
