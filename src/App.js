@@ -1,14 +1,17 @@
 import TheBtn from './components/thebtn';
 import { useEffect, useState } from 'react';
 import { useSpring, animated} from '@react-spring/web';
+import JSConfetti from 'js-confetti';
 import './App.css';
 
-const center = computeCenter([window.innerHeight, window.innerWidth])
-function computeCenter(windowYX) {
+const center = computeCenter(window.innerHeight, window.innerWidth)
+function computeCenter(height, width) {
+  console.log(width, height)
   let r = 0;
-  windowYX[1] > windowYX[0] ?
-    r = windowYX[0] : r = windowYX[1];
+  width > height ?
+    r = height : r = width;
   const center = (r / 2)
+  console.log(center)
   return center;
 }
 function App() {
@@ -26,6 +29,14 @@ function App() {
     };
   }, []);
   function triggerEnd() {
+    const conf = new JSConfetti()
+    conf.addConfetti({
+      confettiRadius: 6,
+      confettiNumber: 500,
+      confettiColors: [
+        '#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7',
+      ],
+    })
     setButtonOpacity({
       opacity: 0
     })

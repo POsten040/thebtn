@@ -5,8 +5,8 @@ import { useRef, useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
 function computePos(pos, center) {
-  if (pos > center) return (center % 4) / 2
-  if (pos < 5) return (center % 4) / 2
+  if (pos > center) return (pos % 8) / 2
+  if (pos < 5) return (center % 8) * 2
   if (pos < center && pos > 5) return pos + (center / 2)
 }
 const popover = (
@@ -19,7 +19,7 @@ const popover = (
 );
 
 const TheBtn = (props) => {
-  const { mouseX, mouseY, center, triggerEnd, test } = props;
+  const { mouseX, mouseY, center, triggerEnd } = props;
   const [current, setCurrent] = useState({ x: mouseX, y: mouseY })
   const [position, api] = useSpring(() => ({
     from: {
@@ -38,7 +38,6 @@ const TheBtn = (props) => {
     }, 5000)
     return () => clearTimeout(timer)
   }, [triggerEnd])
-  const body = useRef(document.querySelector("body"))
   return (
     <>
       <animated.div id="animated-btn" style={position}>

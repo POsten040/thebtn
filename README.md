@@ -23,5 +23,4 @@ npm run start
 
 - React
 - [React Spring](https://www.react-spring.dev/docs)
-
-
+- [JSConfetti](https://www.npmjs.com/package/js-confetti)
