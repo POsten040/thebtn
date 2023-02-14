@@ -1,13 +1,14 @@
 import TheBtn from './components/thebtn';
-import {useEffect, useState} from 'react'; 
+import { useEffect, useState } from 'react';
+import { useSpring, animated} from '@react-spring/web';
 import './App.css';
 
 const center = computeCenter([window.innerHeight, window.innerWidth])
-function computeCenter(windowYX){
+function computeCenter(windowYX) {
   let r = 0;
-  windowYX[1]>windowYX[0]?
-  r = windowYX[0] : r = windowYX[1];
-  const center = (r/2)
+  windowYX[1] > windowYX[0] ?
+    r = windowYX[0] : r = windowYX[1];
+  const center = (r / 2)
   return center;
 }
 function App() {
@@ -24,13 +25,44 @@ function App() {
       );
     };
   }, []);
-
+  function triggerEnd() {
+    setButtonOpacity({
+      opacity: 0
+    })
+    setMessageOpacity.start({
+      opacity: 1
+    })
+    setColor.start({
+      backgroundColor: "#E9DCE4"
+    })
+  }
+  const [messageOpacity, setMessageOpacity] = useSpring(() => ({
+    opacity: 0,
+    config: { duration: 7023 }
+  }))
+  const [buttonOpacity, setButtonOpacity] = useSpring(() => ({
+    opacity: 1,
+    config: { duration: 5023 }
+  }))
+  const [color, setColor] = useSpring(() => ({
+    backgroundColor: "#dce9e1",
+    config: { duration: 7023 }
+  }))
   return (
-    <div className="App">
-      <TheBtn 
-      center={center} 
-      mouseX={mousePos['x']} 
-      mouseY={mousePos['y']}/>
+    <div className={`App`}>
+      <animated.div className="anim-div" style={color}>
+        <animated.div id="message" style={messageOpacity}>
+          Enlightened
+          <p id="nice">(nice)</p>
+        </animated.div>
+        <animated.div style={buttonOpacity}>
+          <TheBtn
+            triggerEnd={triggerEnd}
+            center={center}
+            mouseX={mousePos['x']}
+            mouseY={mousePos['y']} />
+        </animated.div>
+      </animated.div>
     </div>
   );
 }
