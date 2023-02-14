@@ -48,7 +48,7 @@ const TheBtn = (props) => {
   return (
     <>
       <animated.div id="animated-btn" style={position}>
-        <OverlayTrigger onToggle={()=>{hide()}} show={popVis} delay={{ show: 400, hide: 300 }} trigger="click" placement="right" overlay={popover}>
+        <OverlayTrigger placement="bottom" onToggle={()=>{hide()}} show={popVis} delay={{ show: 400, hide: 300 }} trigger="click" overlay={popover}>
           <Button
             variant="primary"
             size="lg"
