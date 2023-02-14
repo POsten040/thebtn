@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
 function computePos(pos, center) {
@@ -20,8 +20,8 @@ const popover = (
 
 const TheBtn = (props) => {
   const { mouseX, mouseY, center, triggerEnd } = props;
-  const [current, setCurrent] = useState({ x: mouseX, y: mouseY })
-  const [position, api] = useSpring(() => ({
+  const [current] = useState({ x: mouseX, y: mouseY })
+  const [position] = useSpring(() => ({
     from: {
       top: current.y,
       left: current.x

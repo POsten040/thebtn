@@ -44,7 +44,7 @@ function App() {
       opacity: 1
     })
     setColor.start({
-      backgroundColor: "#b07881"
+      backgroundColor: "#cca3b0"
     })
   }
   const [messageOpacity, setMessageOpacity] = useSpring(() => ({
@@ -56,7 +56,7 @@ function App() {
     config: { duration: 5023 }
   }))
   const [color, setColor] = useSpring(() => ({
-    backgroundColor: "#dce9e1",
+    backgroundColor: "#d6d7d2",
     config: { duration: 7023 }
   }))
   return (
