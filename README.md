@@ -1,10 +1,8 @@
 ## The BTN
 
-Author: Patrick Osten
+**Author**: Patrick Osten
 
-Description 
-
-Press the button that appears on the screen. 
+**Description**: Press the button that appears on the screen. 
 
 [visit the live site here](https://thebtn-production.up.railway.app/)
 
